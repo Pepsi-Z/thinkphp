@@ -1,0 +1,55 @@
+{extend name="common/personal"}
+{block name="personal"}
+						<div id="pcc_right">
+							<table border="0">
+								<form action="/home/homeuser" method="post" enctype="multipart/form-data">
+								<tr>
+									<td width="600px"colspan="2"><span id="ziliao">我的资料&nbsp;&nbsp;昵称:<b style="color:rgb(161,0,0);">&nbsp;&nbsp;</b></span></td>
+								
+									<td rowspan="4"><img src="width="100px"></td>
+								</tr>
+								<tr>
+									<td colspan="2">为了您账户的安全，请填写完整</td>
+								</tr>
+								
+								<tr>
+									<td width="50px">*昵称:</td>
+									<td><input type="" name="hname"value=""></td>
+								</tr>
+								<tr>
+									<td>*性别:</td>
+									<td>
+										<label>
+											<input type="radio" name="hsex"value="m">男
+										</label>
+										<label>
+											<input type="radio" name="hsex"value="w">女
+										</label>
+									</td>
+									<td style="text-align: center;"><input type="file"  name="hfile"></td>
+								</tr>
+								<tr>
+									<td>*年龄:</td>
+										<td><input type="text" name="hage"></td>
+								</tr>
+						
+								<tr>
+									<td>地区:</td>
+									<td colspan="2"><input type="text" name="hdq"></td>
+								</tr>
+								
+								<tr>
+									<td>*手机:</td>
+									<td colspan="2"><input type="text" name="htel"></td>
+								</tr>
+								<tr>
+									<td colspan="3"><input type="submit" value="提交" id="submit"></td>
+								</tr>
+							</form>
+							</table>
+						</div>	
+					</div>
+				</div>
+			</div>
+	</body>
+</html>	

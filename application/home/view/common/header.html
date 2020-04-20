@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8"/>
+	<title>农副产品，网上购物货到付款网站,7天无条件退货</title>
+	<!--<link rel="icon" href="/static/home/image/DL/logo.jpg" type="image/x-icon"/>-->
+	<style>
+	</style>
+	<link href="/static/home/css/top.css"   rel="stylesheet" type="text/css" />
+    <link href="/static/home/css/head.css"  rel="stylesheet" type="text/css" />
+    <link href="/static/home/css/menu.css"  rel="stylesheet" type="text/css" />
+    <link href="/static/home/css/mainbody.css"  rel="stylesheet" type="text/css" />
+    <link href="/static/home/css/foot.css"  rel="stylesheet" type="text/css" />
+    <link href="/static/home/css/tuiguang.css"   rel="stylesheet" type="text/css" />
+    <link href="/static/home/css/goodslist.css"  rel="stylesheet" type="text/css" />
+    <link href="/static/home/css/detail.css"  rel="stylesheet" type="text/css" />
+    <link href="/static/home/css/tocart.css"  rel="stylesheet" type="text/css" />
+    <link href="/static/home/css/hidemenu.css"  rel="stylesheet" type="text/css" />
+    <link href='/static/home/css/jd-mycart.css' type="text/css"  rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="/static/home/style/index.css">	
+	<link rel="stylesheet" type="text/css" href="/static/home/style/presonal.css">
+	<link rel="stylesheet" type="text/css" href="/static/home/css/personal.css">
+  </head>
+  <body>
+	<!--登录-注册-订单-->
+      <div class="head">
+	    <div class="head-1">
+		  <div class="head-2">
+		    <div class="head-3">
+			  您好，
+			  <span>欢迎光临！&nbsp;</span>
+			  {if empty(session('homeFlag'))}
+			  <a href="/login">登录</a> &nbsp;|&nbsp;
+			  {else}
+			  {:session('homeUser.uname')}&nbsp;&nbsp;
+			  {/if}
+
+			  {if !empty(session('homeFlag'))}
+			  <a href="/logout">退出登录</a>
+			  {else}
+			  <a href="/zhuce">注册</a> 
+			  {/if}&nbsp;&nbsp;
+			  <a href="/orderinformation">我的订单</a> &nbsp;
+			  <a href="/personalinformation">个人中心</a>&nbsp;
+			  <img class="img-v" src="/static/home/image/DL/head-vx.png">
+			  <img class="img-v" src="/static/home/image/DL/head-vb.png">
+		    </div>
+	      </div>
+		<!--搜索-购物车-->
+		  <div class="head-so">
+		    <div class="so-1">
+			  <div class="so-gou" method="get">
+			  	<form action="/goodlist" class="biao1">
+			  		<input type="text" class="so" id="gname" name="gname" /> &nbsp;
+			    	<input type="submit" class="so-so" value="搜索"/>&nbsp;&nbsp;&nbsp;
+			    </form>
+			    <form action="/cart/list" class="biao2">
+			    	<input type="submit" class="gou" value="购物车"/>
+				</form>
+			    
+			  </div>
+			  <div class="hotso">
+			    <p>
+
+			    </p>
+			  </div>
+		    </div>
+		  </div>
+        </div>
+      </div>
+	<!--首页导航栏-->
+	  <div class="nav">
+	  <ul>
+		<li class="nav-logo">
+		  <a href="/">
+		    <!--<img src="/static/home/image/DL/logo_new-1.jpg" style="width: 100px;height: 60px;">-->
+		  </a>
+		</li>
+		<li><a href="/">首页</a></li>
+		<?php
+			$cates = app\common\model\Cate::getTreeCates();
+		?>
+		{foreach $cates as $k=>$v}
+		<li><a href="/goodlist/{$v->cid}">{$v->cname}</a>
+		  <ul>
+		  	{foreach $v->sub as $kk=>$vv}
+			<li>
+				<a href="/goodlist/{$vv->cid}">{$vv->cname}</a>
+			</li>
+		 	{/foreach}	
+		  </ul>
+		</li>
+		{/foreach}
+	  </ul>
+	</div>

@@ -1,0 +1,74 @@
+{extend name="common/default"}
+{block name="main"}
+<!--/sidebar-->
+    <div class="main-wrap">
+
+        <div class="crumb-wrap">
+
+        </div>
+        <div class="search-wrap">
+            <div class="search-content">
+                <form action="/user/index" method="get">
+                    <table class="search-tab">
+                        <tr>
+                            
+                            <th width="70">关键字:</th>
+                            <td><input class="common-text" placeholder="关键字" name="keywords" value="" id="" type="text"></td>
+                            <td><input class="btn btn-primary btn2" name="sub" value="查询" type="submit"></td>
+                        </tr>
+                    </table>
+                </form>
+            </div>
+        </div>
+        <div class="result-wrap">
+            <form name="myform" id="myform" method="post">
+                <div class="result-content">
+                    <table class="result-tab" width="100%">
+                        <tr>
+                            <th>ID</th>
+                            <th style='width:250px;'>商品名称</th>
+                            <th >分类名称</th>
+                            <th>商品图片</th>
+                            <th>商品定价</th>
+                            <th>库存</th>
+                            <th>销量</th>
+                            <th>状态</th>
+                            <th>操作</th>
+                        </tr>
+                        {foreach $goods as $k=>$v}
+                        <tr>
+                        
+                            <td>{$v->gid}</td>
+                            <td>{$v->gname}</td>
+                            <td>{$v->cate->cname}</td>
+                            <td><img style='width:100px;' src="{:config('app.disp_path')}{$v->gpic}" alt=""></td>
+                            <td>{$v->price}</td>
+                            <td>{$v->stock}</td>
+                            <td>{$v->salecnt}</td>
+                            <td>
+                                {if $v->status == 1}
+                                 新品
+                                {elseif $v->status == 2}
+                                 上架
+                                {elseif $v->status == 3}
+                                 下架
+                                 {/if}
+                            </td>
+                           
+                            <td>
+                                <a class="link-update" href="/good/{$v->gid}/edit">修改</a>
+                                 <a class="link-update" href="/good/up/{$v->gid}">上架</a>
+                                  <a class="link-update" href="/good/down/{$v->gid}">下架</a>
+                                <a class="link-del" onclick="return confirm('您确认要删除吗？')" href="/good/delete/{$v->gid}">删除</a>
+                            </td>
+                        </tr>
+                      {/foreach}
+                    </table>
+                    <div class="list-page">
+					{$goods->render()|raw}</div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <!--/main-->
+{/block}

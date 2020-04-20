@@ -1,0 +1,122 @@
+{include file="common/header"}
+		<div id="personal">
+			<div id="personal_top">我的账户</div>
+			<div id="personal_center">
+				<div id="pc1"> 
+					<div id="pc11">
+						<table border="0">
+							<tr>
+								<td class="pc12" width="30%">登录账户</td>
+								<td rowspan="2" width="40%">
+									{if empty(session('homeUser.hp'))}
+										<span style="font-size: 12px;color: #888;">您没有上传头像</span>
+										{else}
+											<img src="{:config('index_path')}{:session('homeUser.hp')}"width="60px"height="60px">
+										{/if}
+										</td>
+
+								</td>
+								<td rowspan="2" height="80px"><a href="/logout" id="exit">退出</a></td>
+
+							</tr>
+							<tr>
+								<td><b>{:session('homeUser')->uname}</b></td>
+
+							</tr>
+							<tr>
+								<td colspan="3"><hr></td>
+							</tr>
+							<tr>
+								<td colspan="3" height="45px">账户信息</td>
+							</tr>
+							<tr>
+								<td colspan="3"><a class="pc11" href="/loadinformation">账号安全</a></td>
+							</tr>
+							<tr>
+								<td colspan="3"><a class="pc11" href="/personalinformation">个人资料</a></td>
+							</tr>
+							<tr>
+								<td colspan="3" height="45px">订单信息</td>
+							</tr>
+							<tr>
+								<td colspan="3"><a class="pc11" href="/orderinformation">我的订单</a></td>
+							</tr>
+							<tr>
+								<td colspan="3"><a href="" class="pc11">地址信息</a></td>
+							</tr>
+							
+						</table>
+					</div>
+				</div>
+					{block name="personal"}
+				<div id="pc2">
+					<div id="pc21">
+						<div id="personal_information">
+							<div id="pi1">
+								<div id="pi2">&nbsp;完善个人资料</div>
+							</div>
+							<div id="pi3">
+								<table border="0">
+									<tr>
+										<td><a id="geren">个人资料</a></td>
+									</tr>
+									<tr>
+										<td><hr></td>
+									</tr>
+									<tr>
+										<td><span class="pi4">完善个人资料，我们会根据您的信息和喜好来推送给您感兴趣的信息。</span></td>
+									</tr>
+									<tr  height="100px">
+										<td><span class="pi4">您的性别:</span><br>
+										<select name="sex" class="text">
+											<option></option>
+											<option value="男">男</option>
+											<option value="女">女</option>
+										</select>
+										</td>
+									</tr>
+									<tr height="100px">
+										<td>
+											<span class="pi4">您的生日:</span><br>
+											<select class="select">
+												<option></option>
+												<option></option>
+												<option></option>
+											</select>
+											<select class="select">
+												<option></option>
+												<option></option>
+												<option></option>
+											</select>
+											<select class="select">
+												<option></option>
+												<option></option>
+												<option></option>
+											</select>	
+										</td>
+									</tr>
+									<tr>
+										<td>
+											您的购物对象? <span class="pi4">(勾选所有符合项)</span><br><br>
+											<label>
+											<input type="checkbox" name="object[]" value="男士"><span class="pi4">男士</span></label>
+											<label>
+											<input type="checkbox" name="object[]" value="女士"><span class="pi4">女士</span></label>
+											<label>
+											<input type="checkbox" name="object[]" value="男童"><span class="pi4">男童</span></label>
+											<label>
+											<input type="checkbox" name="object[]" value="女童"><span class="pi4">女童</span></label>
+										</td>
+									</tr>
+									<tr height="80px">
+										<td><input type="submit" name="" value="保存修改" class="anniu"></td>
+									</tr>
+								</table>
+							</div>
+						</div>
+						<div id="nav"></div>
+					</div>
+				</div>
+					{/block}
+			</div>
+		</div>

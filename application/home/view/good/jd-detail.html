@@ -1,0 +1,86 @@
+{include file='common/header'}
+
+<div id='detail'>
+    <div id='p-path'></div>	
+    <div id='p-cont'>
+    	<div id='p-l'>
+    		<img id='p-img' src="{:config('disp_path').$good->gpic}" alt="">
+    		<div id='p-lt'>
+	    		<!-- <img class='p-ltimg' src="/static/home/images/plt1.jpg" alt="">
+	    		<img class='p-ltimg' src="/static/home/images/plt2.jpg" alt="">
+	    		<img class='p-ltimg' src="/static/home/images/plt3.jpg" alt="">
+	    		<img class='p-ltimg' src="/static/home/images/plt4.jpg" alt="">
+	    		<img class='p-ltimg' src="/static/home/images/plt5.jpg" alt=""> -->
+    		</div>
+    		<span id='p-btm1'>商品编号：1057210</span>
+    		<span id='p-btm2'><i></i>分享</span>
+    		<span id='p-btm3'><i></i>关注商品</span>
+    	</div>
+    	<div id='p-m'>
+    		<div id='p-m-1'>
+    			<div id='p-name'>{$good->gname}</div>
+    			<div id='p-desc'>{$good->gdesc}</div>
+    		</div>
+    		<span id='p-m-2'>对比</span>
+    		<div id='p-m-3'>
+    			<p id='p-m-3-1'>优惠价：<span>￥{$good->price}</span> (降价通知)</p>
+    			<p id='p-m-3-2'>促销信息：<span>手机专享价</span> <em>￥879.00</em>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>去手机购买</b><i></i></p>
+    			<p id='p-m-3-3'><span>限制</span> 此价格不与套装优惠同时享受</p>
+    			<div id='p-m-3-f'><span>库存量<br><b>{$good->stock}件</b></span><br></div>
+    		</div>
+    		<div id='p-m-4'>服　　务：现在至明天11:10前完成下单,预计明天(08月31日)送达</div>
+    		<div id='p-m-5'>增值保障：<span>延长保2年 ￥169</span><span>延长保1年  ￥169</span></div>
+    		<div id='p-m-6'>选择套装：<span>1件</span><span>套装2件</span></div>
+    		<div id='p-m-7'>白条分期：<span>30天免息</span><span>￥304.16x3期</span><span>￥154.33x6期</span><span>￥79.41x12期</span><span>￥41.95x24期</span></div>
+    		<div id='p-m-8'>
+    		   <form action="/cart/add" method='post'>
+    			<div id='p-m-8-1'>
+    				<input type="hidden" name="gid" value="{$good->gid}">
+    				<!-- 要购买的商品的数量 -->
+    				<input id='p-cnt' type="text" name='cnt' readonly value='1'>
+                    <button type="button" id='pn-add'>+</button>
+                    <button type="button" id='pn-dec'>-</button>
+    				<script>
+                        var add = document.getElementById('pn-add');
+                        var dec = document.getElementById('pn-dec');
+                        var cnt = document.getElementById('p-cnt');
+                        add.onclick = function(){
+                            cnt.value++;
+                        };
+                        dec.onclick = function(){
+                            cnt.value--;
+                            if (cnt.value<=0) {
+                                cnt.value = 1;
+                            }
+                           
+                        };
+                    </script>
+                 
+                    <div style='clear:both;'></div>
+    			</div>
+                <!--  把什么商品放入购物车   -->
+    			<input type='submit' value='' id='pcart' />
+    			</form>
+    		</div>
+    		<div id='p-m-9'></div>
+    	</div>
+    	<img src='/static/home/images/p-r.png' id='p-r'>
+    </div>	
+</div>
+<div style='clear:both;'></div>
+
+
+
+<!--  页脚  -->
+		<div id='bottom'>
+			<div id='b_m'>
+				<img src="/static/home/images/b_4.png" alt="">
+				<img src="/static/home/images/b_3.png" alt="">
+				<img src="/static/home/images/b_2.png" alt="">
+				<img src="/static/home/images/b_1.png" alt="">
+			</div>
+		</div>
+		
+		{include file="common/bottom"} 
+	</body>
+</html>

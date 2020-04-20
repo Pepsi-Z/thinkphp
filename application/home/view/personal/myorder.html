@@ -1,0 +1,55 @@
+{extend name="common/personal"}
+{block name="personal"}
+<div id="pc2">
+	<div id="pc21">
+		<h3 style="text-align: center;">我的订单</h3>
+		<table border="0"width="100%">
+			{foreach $data as $k=>$v}
+			<tr style="font-size: 12px;">
+				<td colspan="2">订单号:{$v->oid}</td>
+				<td colspan="2">下单时间:{$v->create_at|date="Y-m-d H:i:s"}</td>
+			</tr>
+			<tr style="font-size: 12px;">
+				<td colspan="2">收货信息:{$v->addr}&nbsp;{$v->user->uname}&nbsp;{$v->tel}</td>
+				<td colspan="2" align="right"style="color: #A10000">
+					{if $v->status==1}
+					<a href="/confirm/{$v->oid}">确认收货</a>
+					{else}
+					<a href="/cancel/{$v->oid}">取消订单</a>
+					{/if}
+				</td>
+			</tr>
+			<tr height="10px">
+				<td></td>
+			</tr>
+		
+			<tr style="text-align: center;font-size: 15px;color: #333;">
+			
+				<th width="200px">商品图片</th>
+				<th width="200px">商品名称</th>
+				<th width="130px">颜色/尺码/数量</th>
+				<th width="130px">单价/小计</th>
+			</tr>
+			{foreach $v->detail()->select() as $kk=>$vv}
+			<tr style="text-align: center;font-size: 12px;color: #333;">
+
+				<td><img src="{:config('index_path').$vv->good->gpic}" width="150px"></td>
+				<td>{$vv->good->gname}</td>
+				<td>{$vv->color}/{$vv->size}/{$vv->cnt}</td>
+				<td>¥{:number_format($vv->price/$vv->cnt,2)}/¥{:number_format($vv->price,2)}</td>
+			</tr>
+			{/foreach}
+			<tr>
+				<td colspan="4" align="right" style="font-weight: bold;color: #A10000">总价:¥{:number_format($v->total,2)}</td>
+			</tr>
+			<tr>
+				<td colspan="4"><hr></td>
+			</tr>
+			
+			{/foreach}
+		</table>
+		<div style="text-align: center;">{$data->render()|raw}</div>
+		<div id="nav"></div>
+	</div>
+</div>		
+{/block}

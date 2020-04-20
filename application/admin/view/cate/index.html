@@ -1,0 +1,47 @@
+{extend name="common/default"}
+{block name="main"}
+  <!--/sidebar-->
+    <div class="main-wrap">
+        <div class="result-wrap">
+            <form name="myform" id="myform" method="post">
+                <div class="result-title">
+
+                </div>
+                <div class="result-content">
+                    <table class="result-tab" width="100%">
+                        <tr>
+                         
+                            <th>ID</th>
+                            <th>分类名称</th>
+                            <th>分类父ID</th>
+                            <th>分类的路径</th>
+                            <th>操作</th>
+                        </tr>
+                        {foreach $cates as $k=>$v} 
+                        <?php
+                            $n = substr_count($v->path,',')-1;
+                        ?>
+                        <tr>
+                            <td>{$v->cid}</td>
+                            <td>{:str_repeat('&nbsp;',6*$n)}|---{$v->cname}</td>
+                            <td>{$v->pid}</td>
+                            <td>{$v->path}</td>
+                            <td>
+                                <a class="link-update" href="/cate/{$v->cid}/edit">修改</a>
+                                <a class="link-del" onclick="return confirm('您确认要删除吗？')" href="/cate/delete/{$v->cid}">删除</a>
+                                <a class="link-del" href="/cate/create/{$v->cid}">添加子类</a>
+                            </td>
+                        </tr>
+                        {/foreach}
+                       
+                    </table>
+				<div class="list-page"> {$cates->render()|raw}
+				</div>
+                   
+                </div>
+            </form>
+        </div>
+    </div>
+    <!--/main-->
+
+{/block}

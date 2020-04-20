@@ -1,0 +1,75 @@
+{extend name="common/default"}
+{block name="main"}
+<!--/sidebar-->
+    <div class="main-wrap">
+
+        <div class="crumb-wrap">
+        </div>
+        <div class="search-wrap">
+            <div class="search-content">
+                <form action="/good/index" method="get">
+                    <table class="search-tab">
+                        <tr>
+
+                            <th width="70">赛事名称</th>
+                            <td><input class="common-text" placeholder="关键字" name="title" value="" id="" type="text"></td>
+                            <td><input class="btn btn-primary btn2" name="sub" value="查询" type="submit"></td>
+                        </tr>
+                    </table>
+                </form>
+            </div>
+        </div>
+        <div class="result-wrap">
+            <form name="myform" id="myform" method="post">
+                <div class="result-content">
+                    <table class="result-tab" width="100%">
+                        <tr>
+                            <th>ID</th>
+                            <th style='width:250px;'>赛事标题</th>
+                            <th style='width:250px;'>赛事简介</th>
+                            <th>赛事图片</th>
+                            <th>注册时间</th>
+                            <th>赛事状态</th>
+                            <th>发布状态</th>
+                            <th>操作</th>
+                        </tr>
+                        {foreach $goods as $k=>$v}
+                        <tr>
+
+                            <td>{$v.id}</td>
+                            <td>{$v.title}</td>
+                            <td>{$v.content}</td>
+                            <td><img style='width:100px;' src="{:config('app.disp_path')}{$v.img}" alt=""></td>
+                            <td>{$v.createtime|date='Y-m-d'}</td>
+                            <td>
+                                {if $v.progress == 1}
+                                未开始
+                                {elseif $v.progress == 2}
+                                开始
+                                {elseif $v.progress == 3}
+                                结束
+                                {/if}
+                            </td>
+                            <td>
+                                {if $v.type == 1}
+                                未发布
+                                {elseif $v.type == 2}
+                                发布
+                                {/if}
+                            </td>
+
+                            <td>
+                                <a class="link-update" href="/good/{$v.id}/edit">修改</a>
+                                <a class="link-del" onclick="return confirm('您确认要删除吗？')" href="/good/delete/{$v.id}">删除</a>
+                            </td>
+                        </tr>
+                      {/foreach}
+                    </table>
+                    <div class="list-page">
+                        {$goods|raw}</div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <!--/main-->
+{/block}

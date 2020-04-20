@@ -1,0 +1,32 @@
+{extend name="common/personal"}
+{block name="personal"}
+<div id="pc2">
+	<div id="pc21">
+		<h3 style="text-align: center;">收货地址信息</h3><a href="/addaddr"style="float:right;margin-right: 35%;font-size: 13px;color: #A11111">添加地址</a>
+		<table border="0" cellspacing="0" style="font-size: 12px;color:#333;">
+		
+			{foreach $data as $k=>$v}
+			<tr height="30px">
+				<td width="400px"><span>收货地址:</span>{$v->addr}</td>
+				<td width="400px" align="right"><a href="/updateaddr/{$v->aid}">修改地址信息</a><a href="/deleteaddr/{$v->aid}"onclick="return confirm('确定要删除吗?')">删除地址</a></td>
+			</tr>
+			<tr height="30px">
+				<td>收货人:{$v->aname}</td>
+				<td>电子邮箱:{$v->email}</td>
+			</tr>
+			<tr height="30px">
+				<td>电话:{$v->tel}</td>
+				<td>备用电话:{$v->sparetell}</td>
+			</tr>
+			<tr>
+				<td colspan="2"><hr></td>
+			</tr>
+
+
+			
+			{/foreach}
+		</table>
+		<div id="nav"></div>
+	</div>
+</div>
+{/block}

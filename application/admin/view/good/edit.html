@@ -1,0 +1,81 @@
+{extend name="common/default"}
+{block name="main"}
+<!--/sidebar-->
+<div class="main-wrap">
+
+    <div class="crumb-wrap">
+    </div>
+    <div class="result-wrap">
+        <div class="result-content">
+            <form action="/good/update/{$good.id}" method="post" id="myform" name="myform"
+                  enctype="multipart/form-data">
+                <table class="insert-tab" width="100%">
+                    <tbody>
+
+                    <tr>
+                        <th><i class="require-red">*</i>赛事标题：</th>
+                        <td>
+                            <input class="common-text required" id="title" name="title" size="50" value="{$good.title}"
+                                   type="text">
+                        </td>
+                    </tr>
+                    <tr>
+                        <th><i class="require-red">*</i>赛事简介：</th>
+                        <td>
+                            <textarea name="content" id="content" cols="70" rows="10">{$good.content}</textarea>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th><i class="require-red">*</i>赛事图片</th>
+                        <td>
+                            <input type='file' name='img' value="">
+                            <!--/static/uploads/images/20171111.jpg -->
+                            <img style="width:100px;" src="{:config('app.disp_path')}{$good.img}" alt="">
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>赛事状态：</th>
+                        <td>
+                            <input type="radio" name="progress"
+                                   {if $good.progress == 1}checked{/if}
+
+                            value='1'>未开始
+                            <input type="radio" name="progress"
+
+                                   {if $good.progress == 2}checked{/if}
+
+                            value='2'>开始
+                            <input type="radio" name="progress"
+
+                                   {if $good.progress == 3}checked{/if}
+
+                            value='3'>结束
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>发布状态：</th>
+                        <td>
+                            <input type="radio" name="type"
+                                   {if $good.type == 1}checked{/if}
+                             value='1'>未发布
+                            <input type="radio" name="type"
+                                   {if $good.type == 2}checked{/if}
+                            value='2'>发布
+                        </td>
+                    </tr>
+                    <tr>
+                        <th></th>
+                        <td>
+                            <input class="btn btn-primary btn6 mr10" value="提交" type="submit">
+                            <input class="btn btn6" onclick="history.go(-1)" value="返回" type="button">
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </form>
+        </div>
+    </div>
+
+</div>
+<!--/main-->
+{/block}

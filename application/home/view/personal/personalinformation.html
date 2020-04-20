@@ -1,0 +1,60 @@
+{extend name="common/personal"}
+{block name="personal"}
+				<div id="pc2">
+					<div id="pc21">
+						<div id="personal_information">
+							<div id="pi1">
+								<div id="pi2">&nbsp;完善个人资料</div>
+							</div>
+							<div id="pi3">
+								<table border="0">
+									<form action="/personupdate" method="post" enctype="multipart/form-data">
+									<tr>
+										<td><a id="geren">个人资料</a></td>
+									</tr>
+									<tr>
+										<td><hr></td>
+									</tr>
+									<tr>
+										<td><span class="pi4">完善个人资料，我们会根据您的信息和喜好来推送给您感兴趣的信息。</span></td>
+									</tr>
+									<tr>
+										<td>
+										{if empty(session('homeUser.hp'))}
+										<span>您没有上传头像</span>
+										{else}
+											<span >您的头像:</span><img src="{:config('index_path')}{:session('homeUser.hp')}" width="150px" height="150px">
+										{/if}
+										</td>
+									</tr>
+									<tr>
+										<td class="pi4">点击此处可以上传新的头像<input type="file" name="fp" style="opacity: 0;margin-left: -148px;width:150px;"></td>
+									</tr>
+									<tr  height="100px">
+										<td><span class="pi4">您的性别:</span><br>
+										<select name="sex" class="text">
+											<option value="m"
+											{if session('homeUser.sex')=='m'}selected{/if}
+											>男</option>
+											<option value="w"
+											{if session('homeUser.sex')=='w'}selected{/if}
+											>女</option>
+											<option value="x"
+											{if session('homeUser.sex')=='x'}selected{/if}
+											>保密</option>
+										</select>
+										</td>
+									</tr>
+							
+									<tr height="80px">
+										<td><input type="submit" name="" value="保存修改" class="anniu"></td>
+									</tr>
+									</form>
+								</table>
+							</div>
+						</div>
+						<div id="nav"></div>
+						
+					</div>
+				</div>
+{/block}

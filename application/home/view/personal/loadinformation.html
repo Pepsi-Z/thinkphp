@@ -1,0 +1,54 @@
+{extend name="common/personal"}
+{block name="personal"}
+<div id="pc2">
+				<div id="pc21">
+					<div id="load_information">
+							<table>
+								<tr>
+									<td><a id="denglu">登录信息</a></td>
+								</tr>
+								<tr>
+									<td><hr></td>
+								</tr>
+								<tr height="20px">
+									<td></td>
+								</tr>
+								<form action="/loadupdate" method="post">
+									<tr height="80px">
+										<td>
+											<span  class="pi4">姓名</span><br>
+											<input type="text" name="uname" class="text"value="{$data -> uname}">
+										</td>
+									</tr>
+									<tr height="80px">
+										<td>
+											<span class="pi4">电话</span><br>
+											<input type="text" name="tel" class="text"
+											value="{$data -> tel}">
+										</td>
+									</tr>
+									<tr height="80px">
+										<td>
+											<span class="pi4">更改密码</span><br>
+											<input type="text" name="upwd" class="text">
+										</td>
+									</tr>
+									<tr height="80px">
+										<td>
+											<span class="pi4">确认密码</span><br>
+											<input type="text" name="reupwd" class="text"><br><br>
+										</td>
+									</tr>
+								
+									<tr height="80px">
+										<td>
+											<input type="submit" value="保存信息" class="anniu">
+										</td>
+									</tr>
+								</form>
+							</table>
+						</div>
+						<div id="nav"></div>
+					</div>
+				</div>	
+{/block}

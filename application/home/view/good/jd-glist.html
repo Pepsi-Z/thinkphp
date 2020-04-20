@@ -1,0 +1,45 @@
+{include file='common/header'}
+   <!-- 商品列表 -->
+   <div id='glist'>
+   	  <ul id='gl'>
+		  <br>
+   	    <h1 style='font-size:15px;text-indent:10px;'>推广商品</h1>
+		  <br>
+		  {foreach $res as $k=>$v}
+   	  	<li>
+			<a href="/gooddetail/{$v->gid}"><img src="{:config('app.disp_path').$v->gpic}" alt="" style="width:200px;"></a>
+   	  		<div class='tg-name'>{$v->gname}</div>
+   	  		<div class='tg-price'>¥{$v->price}</div>
+   	  		<div class='tg-pj'>已卖{$v->salecnt}</div>
+   	  	</li>
+		  {/foreach}
+   	  </ul>
+	  <div id='gr'>
+	  	  <div id='gr_1'>
+	  	  	  <span>销量</span><span>价格</span><span>库存</span><span>上架时间</span>
+	  	  </div>
+	  	  <div id='gr_2'></div>
+	  	  <ul id='gr_3'>
+	  	  	{foreach $goods as $k=>$v}
+	  	  	
+	  	  	<li>
+	  	  		<a href="/gooddetail/{$v->gid}"><img src="{:config('app.disp_path').$v->gpic}" alt=""></a>
+	  	  		<div class='p-price'>¥{$v->price}</div>
+	  	  		<div class='p-name'>{$v->gname}</div>
+	  	  		<div class='p-special'>{$v->gdesc}</div>
+	  	  		<div class='p-pl'>{$v->stock}件</div>
+	  	  		<div class='p-btn'>
+	  	  			<span>对比</span>
+	  	  			<span>关注</span>
+	  	  			<span>加入购物车</span>
+	  	  		</div>
+	  	  	</li>
+	  	  	{/foreach}
+	  	  </ul>
+	  </div>
+      <div style='clear:both;'></div>
+   </div>
+
+{include file="common/bottom"}
+	</body>
+</html>

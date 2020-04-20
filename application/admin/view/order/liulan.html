@@ -1,0 +1,32 @@
+{extend name="common/default"}
+{block name="main"}
+    <!--/sidebar-->
+    <div class="main-wrap">
+        <div class="result-wrap">
+            <form name="myform" id="myform" method="post">
+                <div class="result-content">
+                    <table class="result-tab" width="100%">
+                        <tr>                           
+                            <th>商品名称</th>
+                            <th>商品图片</th>
+                            <th>购买单价</th>
+                            <th>购买数量</th>
+                            <th>小计</th>
+                        </tr>
+                     {foreach $res as $k=>$v}
+                        <tr>
+                            <td>{$v->good->gname}</td>
+                            <td><img src="{:config('disp_path')}{$v->good->gpic}" width="100px"></td>
+                            <td>{$v->good->price}</td>
+                            <td>{$v->cnt}</td>
+                            <td>{$v->cnt*$v->price}</td>
+                        </tr>
+                      {/foreach}
+                           
+                        </tr> 
+                    </table>
+                </div>
+            </form>
+        </div>
+    </div>
+	{/block}

@@ -1,0 +1,62 @@
+{extend name="common/default"}
+{block name="main"}
+ <!--/sidebar-->
+    <div class="main-wrap">
+
+        <div class="crumb-wrap">
+        </div>
+        <div class="result-wrap">
+            <div class="result-content">
+                <form action="/good/save" method="post" id="myform" name="myform" enctype="multipart/form-data">
+                    <table class="insert-tab" width="100%">
+                        <tbody>
+
+                            <tr>
+                                <th><i class="require-red">*</i>赛事标题：</th>
+                                <td>
+                                    <input class="common-text required" id="title" name="title" size="50" value="" type="text">
+                                </td>
+                            </tr>
+                            <tr>
+                                <th><i class="require-red">*</i>赛事简介：</th>
+                                <td>
+                                    <textarea name="content" id="content" cols="58" rows="10"></textarea>
+                                </td>
+                            </tr>
+
+                             <tr>
+                                <th><i class="require-red">*</i>缩略图</th>
+                                <td>
+                                    <input type='file' name='img' value="">
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>赛事状态：</th>
+                                <td>
+                                    <input type="radio" checked="" name="progress" value='1'>未开始
+                                    <input type="radio" name="progress" value='2'>开始
+                                    <input type="radio" name="progress" value='3'>结束
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>发布状态：</th>
+                                <td>
+                                    <input type="radio" checked="" name="type" value='1'>未发布
+                                    <input type="radio" name="type" value='2'>发布
+                                </td>
+                            </tr>
+                            <tr>
+                                <th></th>
+                                <td>
+                                    <input class="btn btn-primary btn6 mr10" value="提交" type="submit">
+                                    <input class="btn btn6" onclick="history.go(-1)" value="返回" type="button">
+                                </td>
+                            </tr>
+                        </tbody></table>
+                </form>
+            </div>
+        </div>
+
+    </div>
+    <!--/main-->
+{/block}

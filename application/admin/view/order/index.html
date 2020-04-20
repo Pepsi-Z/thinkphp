@@ -1,0 +1,63 @@
+{extend name="common/default"}
+{block name="main"}
+<!--/sidebar-->
+    <div class="main-wrap">
+
+        <div class="crumb-wrap">
+
+        </div>
+        <div class="search-wrap">
+            <div class="search-content">
+                <form action="/order/index" method="get">
+                    <table class="search-tab">
+                        <tr>
+                            <th width="70">作品:</th>
+                            <td>
+                                <input class="common-text" placeholder="关键字" name="name" value="{if(!empty($rec))}{$rec}{/if}" id="rec" type="text">
+                            </td>
+                            <td>
+                                <input class="btn btn-primary btn2" name="sub" value="查询" type="submit">
+                            </td>
+                        </tr>
+                    </table>
+                </form>
+            </div>
+        </div>
+        <div class="result-wrap">
+            <form name="myform" id="myform" method="post">
+
+                <div class="result-content">
+                    <table class="result-tab" width="100%" text-a>
+                        <tr>
+                            <th width="150px">作品名</th>
+                            <th>作品描述</th>
+							<th>作品展示</th>
+                            <th>参赛者</th>
+                            <th>所属比赛</th>
+							<th>操作</th>
+                         </tr> 
+                        {foreach $data as $k=>$v}
+						<tr>
+							<td>{$v.name}</td>
+							<td>{$v.content}</td>
+							<td>
+                                <img style='width:100px;' src="{:config('app.disp_path')}{$v.img}" alt="">
+                            </td>
+							<td>{$v.uname}</td>
+							<td>{$v.title}</td>
+							<td>
+                                
+                                 <!--<a class="link-update" href="/liulan/xiangqing/{$v.id}">订单详情</a>-->
+                                  <a class="link-update" href="/order/deliver/{$v.id}">发货</a>
+                                <a class="link-del" onclick="return confirm('您确认要删除吗？')" href="/order/delete?oid={$v.id}">删除</a>
+                            </td>			
+						</tr>
+					{/foreach}	
+                    </table>
+                    <div class="list-page"> {$data | raw}</div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <!--/main-->
+{/block}
