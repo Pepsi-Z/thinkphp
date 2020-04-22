@@ -71,12 +71,12 @@ class LoginController extends Controller
             $where['upwd'] = $upwd;
             $user = Db::name('base_user')->where($where)->find();
 //            $user = Db::name('base_user')->where($where)->find();
-            dump($user);die;
+//            dump($user);die;
 //            $user = Users::where('uname','=',$uname)->where('upwd','=',$upwd)->find();
 //
 //            $auth = $user->auth;
             
-            if($user['auth'] == '3'){
+            if($user['auth'] == '4'){
                 return $this->error('没有权限，不能登录！！');
                 die;
             }

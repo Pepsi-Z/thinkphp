@@ -8,16 +8,21 @@
         </div>
         <div class="result-wrap">
             <div class="result-content">
-                <form action="/cate/update/{$cate->cid}" method="post" id="myform" name="myform" enctype="multipart/form-data">
+                <form action="/cate/update/{$cate.id}" method="post" id="myform" name="myform" enctype="multipart/form-data">
                     <table class="insert-tab" width="100%">
                         <tbody>
-                            <tr>
-                                <th><i class="require-red">*</i>分类名称：</th>
-                                <td>
-                                    <input class="common-text required" id="cname" name="cname" size="50" value="{$cate->cname}" type="text">
-                                </td>
-                            </tr>
-                           
+                        <tr>
+                            <th><i class="require-red">*</i>公告标题：</th>
+                            <td>
+                                <input class="common-text required" id="title" name="title" size="50" value="{$cate.title}" type="text">
+                            </td>
+                        </tr>
+                        <tr>
+                            <th><i class="require-red">*</i>公告内容：</th>
+                            <td>
+                                <textarea name="content" id="content" cols="70" rows="10">{$cate.content}</textarea>
+                            </td>
+                        </tr>
                             <tr>
                                 <th></th>
                                 <td>

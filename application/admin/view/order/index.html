@@ -24,7 +24,7 @@
             </div>
         </div>
         <div class="result-wrap">
-            <form name="myform" id="myform" method="post">
+            <form name="myform" id="myform" >
 
                 <div class="result-content">
                     <table class="result-tab" width="100%" text-a>
@@ -34,6 +34,7 @@
 							<th>作品展示</th>
                             <th>参赛者</th>
                             <th>所属比赛</th>
+                            <th>审核状态</th>
 							<th>操作</th>
                          </tr> 
                         {foreach $data as $k=>$v}
@@ -46,9 +47,15 @@
 							<td>{$v.uname}</td>
 							<td>{$v.title}</td>
 							<td>
-                                
-                                 <!--<a class="link-update" href="/liulan/xiangqing/{$v.id}">订单详情</a>-->
-                                  <a class="link-update" href="/order/deliver/{$v.id}">发货</a>
+                                {if $v.type == 1}
+                                未审核
+                                {elseif $v.type == 2}
+                                审核通过
+                                {/if}
+                            </td>
+							<td>
+                                <a class="link-update" href="/order/edit/?id={$v.id}">审核</a>
+                                <a class="link-update" href="/order/deliver/{$v.id}">打分</a>
                                 <a class="link-del" onclick="return confirm('您确认要删除吗？')" href="/order/delete?oid={$v.id}">删除</a>
                             </td>			
 						</tr>

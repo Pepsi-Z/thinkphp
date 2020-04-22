@@ -139,9 +139,10 @@ class UserController extends Controller
         // 如果只是获取一条记录
         // Users::find($uid);
         // 参数是要获取的用户的id
-        $user = Users::get($uid);
-        // var_dump($user);die;
-        $auth = $user->auth;
+        $user = Db::name('base_user')->where('uid','=',$uid)->find();
+//        $user = Users::get($uid);
+//        dump($user);die;
+        $auth = $user['auth'];
         if($auth == '1'){
             return $this->error('该用户不能被修改');
         }
